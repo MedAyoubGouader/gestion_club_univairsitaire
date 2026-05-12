@@ -1,0 +1,4 @@
+ALTER USER system IDENTIFIED BY system123;
+CREATE USER gestionclub IDENTIFIED BY gestion123;
+GRANT CONNECT, RESOURCE, DBA TO gestionclub;
+EXIT;

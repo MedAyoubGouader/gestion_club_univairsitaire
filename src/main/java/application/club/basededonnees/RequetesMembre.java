@@ -38,7 +38,11 @@ public class RequetesMembre {
             pstmt.setString(4, membre.getTelephone());
             pstmt.setString(5, membre.getPoste());
             
-            return pstmt.executeUpdate() > 0;
+            boolean success = pstmt.executeUpdate() > 0;
+            if (success) {
+                new RequetesHistoriqueAction().enregistrerAction("Ajout d'un membre : " + membre.getNom() + " " + membre.getPrenom(), 1);
+            }
+            return success;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -57,7 +61,11 @@ public class RequetesMembre {
             pstmt.setString(5, membre.getPoste());
             pstmt.setInt(6, membre.getIdMembre());
             
-            return pstmt.executeUpdate() > 0;
+            boolean success = pstmt.executeUpdate() > 0;
+            if (success) {
+                new RequetesHistoriqueAction().enregistrerAction("Modification d'un membre ID: " + membre.getIdMembre(), 1);
+            }
+            return success;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -70,7 +78,11 @@ public class RequetesMembre {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
             pstmt.setInt(1, idMembre);
-            return pstmt.executeUpdate() > 0;
+            boolean success = pstmt.executeUpdate() > 0;
+            if (success) {
+                new RequetesHistoriqueAction().enregistrerAction("Suppression d'un membre ID: " + idMembre, 1);
+            }
+            return success;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

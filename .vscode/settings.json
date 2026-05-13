@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^javac -d target/classes -sourcepath src/main/java src/main/java/application/club/basededonnees/RequetesMembre\\.java$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
